@@ -38,7 +38,8 @@ var (
 
 // Parents renders the parents of this report.Node, which have been aggregated
 // from the probe reports.
-func Parents(r report.Report, n report.Node) (result []Parent) {
+func Parents(r report.Report, n report.Node) []Parent {
+	result := make([]Parent, 0, n.Parents.Size())
 	topologyIDs := []string{}
 	for topologyID := range getLabelForTopology {
 		topologyIDs = append(topologyIDs, topologyID)
